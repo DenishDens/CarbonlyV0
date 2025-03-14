@@ -1,0 +1,33 @@
+-- Seed Emission Factors
+INSERT INTO emission_factors (category, subcategory, material, unit, value, source, year, region)
+VALUES
+  ('Energy', 'Electricity', 'Grid Electricity', 'kWh', 0.233, 'EPA eGRID', 2022, 'USA'),
+  ('Energy', 'Electricity', 'Grid Electricity', 'kWh', 0.193, 'European Environment Agency', 2022, 'EU'),
+  ('Energy', 'Electricity', 'Solar PV', 'kWh', 0.041, 'IPCC', 2022, 'Global'),
+  ('Energy', 'Electricity', 'Wind', 'kWh', 0.011, 'IPCC', 2022, 'Global'),
+  ('Energy', 'Fuels', 'Natural Gas', 'therm', 5.3, 'EPA', 2022, 'USA'),
+  ('Energy', 'Fuels', 'Diesel', 'liter', 2.68, 'EPA', 2022, 'USA'),
+  ('Energy', 'Fuels', 'Gasoline', 'liter', 2.32, 'EPA', 2022, 'USA'),
+  ('Materials', 'Construction', 'Concrete', 'kg', 0.107, 'ICE Database', 2022, 'Global'),
+  ('Materials', 'Construction', 'Steel', 'kg', 1.46, 'ICE Database', 2022, 'Global'),
+  ('Materials', 'Construction', 'Aluminum', 'kg', 8.14, 'ICE Database', 2022, 'Global'),
+  ('Materials', 'Construction', 'Glass', 'kg', 0.85, 'ICE Database', 2022, 'Global'),
+  ('Materials', 'Construction', 'Timber', 'kg', 0.31, 'ICE Database', 2022, 'Global'),
+  ('Materials', 'Construction', 'Insulation', 'kg', 1.86, 'ICE Database', 2022, 'Global'),
+  ('Materials', 'Construction', 'Brick', 'kg', 0.213, 'ICE Database', 2022, 'Global'),
+  ('Transport', 'Road', 'Passenger Car', 'km', 0.171, 'DEFRA', 2022, 'UK'),
+  ('Transport', 'Road', 'Bus', 'km', 0.103, 'DEFRA', 2022, 'UK'),
+  ('Transport', 'Road', 'Motorcycle', 'km', 0.115, 'DEFRA', 2022, 'UK'),
+  ('Transport', 'Air', 'Domestic Flight', 'km', 0.255, 'DEFRA', 2022, 'UK'),
+  ('Transport', 'Air', 'Short-haul Flight', 'km', 0.156, 'DEFRA', 2022, 'UK'),
+  ('Transport', 'Air', 'Long-haul Flight', 'km', 0.150, 'DEFRA', 2022, 'UK'),
+  ('Transport', 'Rail', 'National Rail', 'km', 0.037, 'DEFRA', 2022, 'UK'),
+  ('Transport', 'Rail', 'Light Rail', 'km', 0.028, 'DEFRA', 2022, 'UK'),
+  ('Transport', 'Rail', 'Subway', 'km', 0.031, 'DEFRA', 2022, 'UK'),
+  ('Waste', 'Disposal', 'Landfill', 'kg', 0.586, 'EPA', 2022, 'USA'),
+  ('Waste', 'Disposal', 'Recycling', 'kg', 0.021, 'EPA', 2022, 'USA'),
+  ('Waste', 'Disposal', 'Composting', 'kg', 0.091, 'EPA', 2022, 'USA'),
+  ('Waste', 'Disposal', 'Incineration', 'kg', 0.014, 'EPA', 2022, 'USA'),
+  ('Water', 'Supply', 'Potable Water', 'cubic meter', 0.344, 'Water UK', 2022, 'UK'),
+  ('Water', 'Treatment', 'Wastewater', 'cubic meter', 0.708, 'Water UK', 2022, 'UK');
+
