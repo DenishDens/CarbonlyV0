@@ -493,11 +493,13 @@ export interface Database {
         }>
       }
       get_project_total_emissions: {
-        Args: Record<string, never>
-        Returns: {
+        Args: {
+          project_ids: string[]
+        }
+        Returns: Array<{
           project_id: string
           total_emissions: number
-        }[]
+        }>
       }
     }
     Views: {

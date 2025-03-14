@@ -7,13 +7,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { createClient } from "@/lib/supabase/client"
-import { Database } from "@/lib/supabase/types"
+import type { Database } from "@/types/supabase"
 
 type Tables = Database["public"]["Tables"]
 type Functions = Database["public"]["Functions"]
 type Subscription = Tables["subscriptions"]["Row"]
 type SubscriptionPlan = Tables["subscription_plans"]["Row"]
-type BillingHistory = Functions["get_billing_history"]["Returns"][number]
+type BillingHistoryResponse = Functions["get_billing_history"]
+type BillingHistory = BillingHistoryResponse["Returns"][number]
 
 interface SubscriptionDetailsProps {
   organizationId: string
@@ -32,10 +33,10 @@ export function SubscriptionDetails({ organizationId }: SubscriptionDetailsProps
       try {
         const supabase = createClient()
 
-        // Fetch subscription
+        // Fetch subscription with type checking
         const { data: subData, error: subError } = await supabase
           .from("subscriptions")
-          .select("*")
+          .select()
           .eq("organization_id", organizationId)
           .single()
 
@@ -47,12 +48,12 @@ export function SubscriptionDetails({ organizationId }: SubscriptionDetailsProps
           return
         }
 
-        setSubscription(subData)
+        setSubscription(subData as Subscription)
 
-        // Fetch plan details
+        // Fetch plan details with type checking
         const { data: planData, error: planError } = await supabase
           .from("subscription_plans")
-          .select("*")
+          .select()
           .eq("id", subData.plan_id)
           .single()
 
@@ -64,7 +65,7 @@ export function SubscriptionDetails({ organizationId }: SubscriptionDetailsProps
           return
         }
 
-        setPlan(planData)
+        setPlan(planData as SubscriptionPlan)
 
         // Fetch user count
         const { count, error: userError } = await supabase
@@ -78,12 +79,12 @@ export function SubscriptionDetails({ organizationId }: SubscriptionDetailsProps
 
         // Fetch billing history using the stored procedure
         const { data: billingData, error: billingError } = await supabase
-          .rpc<BillingHistory[]>("get_billing_history", { org_id: organizationId })
+          .rpc("get_billing_history", { org_id: organizationId })
 
         if (billingError) {
           console.error("Error fetching billing history:", billingError)
         } else if (billingData) {
-          setBillingHistory(billingData)
+          setBillingHistory(billingData as BillingHistory[])
         }
 
         setLoading(false)
