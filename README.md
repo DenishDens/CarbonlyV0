@@ -1,72 +1,75 @@
-# Carbonly AI
+# CarbonlyV0
 
-A modern web application for tracking and managing carbon emissions.
+A comprehensive carbon emissions tracking and management platform built with Next.js, TypeScript, and Supabase.
 
 ## Features
 
-- Real-time carbon emissions tracking
-- Scope 1, 2, and 3 emissions monitoring
-- Interactive charts and visualizations
-- Date range selection
-- User authentication
-- Organization management
-- Project management
+- 🌱 Carbon Emissions Tracking
+- 📊 Real-time Analytics Dashboard
+- 🔐 Secure Authentication & Authorization
+- 💳 Subscription Management
+- 📱 Responsive Design
+- 🔄 Real-time Updates
 
 ## Tech Stack
 
-- Next.js 14
-- TypeScript
-- Tailwind CSS
-- Supabase
-- React Hook Form
-- Zod
-- Radix UI
-- Lucide Icons
+- **Frontend**: Next.js 14, React, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Backend**: Supabase
+- **Authentication**: Supabase Auth
+- **Database**: PostgreSQL (via Supabase)
+- **State Management**: React Context
+- **Type Safety**: TypeScript
 
 ## Getting Started
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/carbonly-ai.git
-   cd carbonly-ai
+   git clone https://github.com/DenishDens/CarbonlyV0.git
+   cd CarbonlyV0
    ```
 
 2. Install dependencies:
    ```bash
    npm install
+   # or
+   pnpm install
    ```
 
 3. Set up environment variables:
-   - Copy `.env.local.example` to `.env.local`
-   - Update the Supabase URL and anon key with your values
+   ```bash
+   cp .env.local.example .env.local
+   ```
+   Fill in your Supabase credentials in `.env.local`
 
-4. Set up the database:
-   - Create a new project in Supabase
-   - Run the SQL migrations in `supabase/migrations`
-
-5. Start the development server:
+4. Run the development server:
    ```bash
    npm run dev
+   # or
+   pnpm dev
    ```
 
-6. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 
-```
-carbonly-ai/
-├── app/                    # Next.js app directory
-│   ├── (auth)/            # Authentication routes
-│   ├── admin/             # Admin routes
-│   ├── dashboard/         # Dashboard routes
-│   └── layout.tsx         # Root layout
-├── components/            # React components
-│   ├── ui/               # UI components
-│   └── ...               # Feature components
-├── lib/                   # Utility functions
-├── hooks/                 # Custom React hooks
-├── types/                 # TypeScript types
-└── public/               # Static assets
+- `/app` - Next.js app router pages and layouts
+- `/components` - Reusable React components
+- `/lib` - Utility functions and configurations
+- `/types` - TypeScript type definitions
+- `/hooks` - Custom React hooks
+- `/contexts` - React context providers
+- `/public` - Static assets
+- `/styles` - Global styles and Tailwind configurations
+- `/supabase` - Supabase configurations and migrations
+
+## Environment Variables
+
+Required environment variables:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
 ## Contributing
@@ -79,5 +82,4 @@ carbonly-ai/
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
+This project is licensed under the MIT License.
